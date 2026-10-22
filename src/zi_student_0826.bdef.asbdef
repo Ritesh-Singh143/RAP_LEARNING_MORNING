@@ -1,0 +1,39 @@
+managed implementation in class zbp_i_student_0826 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_STUDENT_0826 alias Student
+persistent table zrs_student_0826
+draft table zrs_std_d
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create{ default function GetDefaultsForCreate; }
+  update;
+  delete;
+  field ( numbering : managed, readonly ) Id;
+
+  action ( features : instance ) acceptAdmission result [1] $self;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  mapping for zrs_student_0826
+    {
+      Id                 = id;
+      Firstname          = firstname;
+      Lastname           = lastname;
+      Age                = age;
+      Course             = course;
+      Courseduration     = courseduration;
+      Status             = status;
+      Gender             = gender;
+      Dob                = dob;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

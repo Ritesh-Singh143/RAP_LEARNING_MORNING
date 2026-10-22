@@ -1,0 +1,56 @@
+@Metadata.layer: #PARTNER
+@Search.searchable: true
+@UI:{ headerInfo: { typeName: 'Student',
+                    typeNamePlural: 'Students',
+                    title : { type: #STANDARD, value: 'Firstname' },
+                    description:{ type: #STANDARD, value: 'Id' } } }
+
+annotate entity ZC_STUDENT_0826 with
+{
+  @UI : { facet: [{ id: 'StudentDetails',
+                    purpose: #STANDARD,
+                     type: #IDENTIFICATION_REFERENCE,
+                     label: 'Student Details' }] }
+
+  @UI: { lineItem: [{ position: 10, label: 'Student ID' } ],
+         identification: [{ position: 10, label: 'Student ID' }] }
+  Id;
+  @UI: { lineItem: [{ position: 20, label: 'First Name'},{ dataAction: 'acceptAdmission', type:#FOR_ACTION, label :'Accept Admission' }],
+         selectionField: [{position: 20 }],
+         identification: [{ position: 20, label: 'First Name'  },{ dataAction: 'acceptAdmission', type:#FOR_ACTION, label :'Accept Admission' }] }
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.6
+  Firstname;
+  @UI: { lineItem: [{ position: 30, label: 'Last Name' }],
+         selectionField: [{position: 30 }],
+         identification: [{ position: 30, label: 'Last Name' }]}
+  @Search.defaultSearchElement: true
+  Lastname;
+  @UI: { lineItem: [{ position: 40, label: 'Age' }],
+  identification: [{ position: 40, label: 'Age' }] }
+  Age;
+  @UI: { lineItem: [{ position: 50, label: 'Course' }],
+  identification: [{ position: 50, label: 'Course' }] }
+  @Search.defaultSearchElement: true
+  Course;
+  @UI: { lineItem: [{ position: 60, label: 'Course Duration' }],
+  identification: [{ position: 60, label: 'Course Duration' }] }
+  Courseduration;
+  @UI: { lineItem: [{ position: 70, label: 'Status' }],
+  identification: [{ position: 70, label: 'Status' }] }
+  @Search.defaultSearchElement: true
+  Status;
+  @UI: { lineItem: [{ position: 80, label: 'Gender' }],
+  identification: [{ position: 80, label: 'Gender' }] }
+  @Search.defaultSearchElement: true
+  @Consumption:{ valueHelpDefinition: [{ entity :{ name: 'zi_gender_0826', element: 'Value' },
+                                         useForValidation: true,
+                                         additionalBinding: [{ localElement: 'GendDescription', element: 'Description' }] } ] }
+  Gender;
+  @UI: { lineItem: [{ position: 90, label: 'Gender Description' }],
+  identification: [{ position: 90, label: 'Gender Description' }] }
+  GendDescription;
+  @UI: { lineItem: [{ position: 100, label: 'DOB' }],
+  identification: [{ position: 100, label: 'DOB' }] }
+  Dob;
+}

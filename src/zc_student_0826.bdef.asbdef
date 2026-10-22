@@ -1,0 +1,18 @@
+projection implementation in class zbp_c_student_0826 unique;
+strict ( 2 );
+use draft;
+
+define behavior for ZC_STUDENT_0826 alias Student
+{
+  use create ( augment );
+  use update;
+  use delete;
+
+  use action acceptAdmission;
+
+  use action Edit;
+  use action Activate;
+  use action Resume;
+  use action Discard;
+  use action Prepare;
+}
